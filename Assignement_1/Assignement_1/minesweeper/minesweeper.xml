@@ -1,0 +1,87 @@
+<instance format="XCSP3" type="CSP">
+  <variables>
+    <array id="mines" note="création du plateau de varables (0 = vide, 1=mine)" size="[5][5]"> 0 1 </array>
+  </variables>
+  <constraints>
+    <intension> eq(mines[0][0],0) </intension>
+    <sum>
+      <list> mines[0][1] mines[1][0..1] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[0][1],0) </intension>
+    <sum>
+      <list> mines[0][0] mines[0][2] mines[1][0..2] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[0][2],0) </intension>
+    <sum>
+      <list> mines[0][1] mines[0][3] mines[1][1..3] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[1][0],0) </intension>
+    <sum>
+      <list> mines[0][0..1] mines[1][1] mines[2][0..1] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[1][2],0) </intension>
+    <sum>
+      <list> mines[0][1..3] mines[1][1] mines[1][3] mines[2][1..3] </list>
+      <condition> (eq,2) </condition>
+    </sum>
+    <intension> eq(mines[1][3],0) </intension>
+    <sum>
+      <list> mines[0][2..4] mines[1][2] mines[1][4] mines[2][2..4] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[2][0],0) </intension>
+    <sum>
+      <list> mines[1][0..1] mines[2][1] mines[3][0..1] </list>
+      <condition> (eq,3) </condition>
+    </sum>
+    <intension> eq(mines[2][1],0) </intension>
+    <sum>
+      <list> mines[1][0..2] mines[2][0] mines[2][2] mines[3][0..2] </list>
+      <condition> (eq,4) </condition>
+    </sum>
+    <intension> eq(mines[2][3],0) </intension>
+    <sum>
+      <list> mines[1][2..4] mines[2][2] mines[2][4] mines[3][2..4] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[3][2],0) </intension>
+    <sum>
+      <list> mines[2][1..3] mines[3][1] mines[3][3] mines[4][1..3] </list>
+      <condition> (eq,2) </condition>
+    </sum>
+    <intension> eq(mines[3][3],0) </intension>
+    <sum>
+      <list> mines[2][2..4] mines[3][2] mines[3][4] mines[4][2..4] </list>
+      <condition> (eq,2) </condition>
+    </sum>
+    <intension> eq(mines[3][4],0) </intension>
+    <sum>
+      <list> mines[2][3..4] mines[3..4][3] mines[4][4] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[4][0],0) </intension>
+    <sum>
+      <list> mines[3][0..1] mines[4][1] </list>
+      <condition> (eq,2) </condition>
+    </sum>
+    <intension> eq(mines[4][1],0) </intension>
+    <sum>
+      <list> mines[3][0..2] mines[4][0] mines[4][2] </list>
+      <condition> (eq,2) </condition>
+    </sum>
+    <intension> eq(mines[4][2],0) </intension>
+    <sum>
+      <list> mines[3][1..3] mines[4][1] mines[4][3] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+    <intension> eq(mines[4][3],0) </intension>
+    <sum>
+      <list> mines[3][2..4] mines[4][2] mines[4][4] </list>
+      <condition> (eq,1) </condition>
+    </sum>
+  </constraints>
+</instance>

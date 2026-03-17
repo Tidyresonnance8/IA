@@ -1,0 +1,199 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage{marvosym}
+
+\assignment{1}
+\group{...}
+\students{..........}{..........}
+
+\begin{document}
+
+\maketitle
+
+Answer to the questions by adding text in the boxes. 
+You may answer in either \textbf{French or English}. 
+Do not modify anything else in the template.  
+The size of the boxes indicate the place you \textbf{can} use, but you \textbf{need not} use all of it (it is not an indication of any expected length of answer). 
+\textbf{Be as concise as possible! A good short answer is better than a lot of nonsense!}
+%\bigskip
+
+\section{Understanding a CP model (2 points)}
+
+\begin{enumerate}
+    \item Answer correctly to the questions 1-4. \textbf{(0.5pt)}
+    You can help yourself by looking
+    at \url{https://www.pycsp.org/documentation/constraints/} to find the definition of the different constraints.
+    \item Answer correctly to the question 5. \textbf{(0.5pt)}
+    \item Add the needed constraint to the model and submit it on INGInious. \textbf{(1pt)}
+\end{enumerate}
+
+\newpage
+\section{Minesweeper Model (8 points)}
+
+\begin{enumerate}
+    \item Implement your CP model in the file \texttt{minesweeper.py} and submit it on INGInious. (\textbf{4 pts})
+    \item Describe your CP model: First describe the variables of your CP model. 
+    For each set of variables, explain what they represent, give their domains and how many variables are in this set. 
+    Then, list the constraints of your CP model. 
+    For each constraint explain what it enforces, and on which variables it is applied. (\textbf{4 pts})
+\end{enumerate}
+
+\begin{answers}[10cm]
+    % Your answer here
+\end{answers}
+
+
+
+
+\newpage
+\section{Atom Placement Problem()}
+\begin{enumerate}
+\item Formulate the atom placement problem as a Local Search problem (problem, cost function, feasible solutions, optimal solutions). \textbf{(1 pt)}
+\end{enumerate}
+
+\begin{answers}[6cm]
+% Your answer here
+\end{answers}
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+    \item You are given a template on Moodle: \textit{atomplacement.py}. Implement your own extension of the \textit{Problem} class from \texttt{aima-python3}. Implement the \texttt{maxvalue} and \texttt{randomized maxvalue} strategies. To do so,
+	you can get inspiration from the \textit{randomwalk} function in \textit{search.py}. Your program will be evaluated on 15 instances (during 1 minute) of which 5 are hidden. We expect you to solve at least 12 out the 15.
+    \begin{enumerate}
+        \item \texttt{maxvalue} chooses the best node (i.e., the node with maximal
+        value) in the neighborhood, even if it degrades the quality of the current solution. 
+        The \texttt{maxvalue} strategy should be defined in a function called
+        \textit{maxvalue} with the following signature: \\
+        \texttt{maxvalue(problem,limit=100)}. \textbf{(2.5 pts)}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answers}[2.5 cm]
+% IN CASE YOU WANT TO SPECIFY ANY COMMENTS ABOUT YOUR IMPLEMENTATION
+\end{answers}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\begin{enumerate}
+\setcounter{enumii}{1}
+    \item \texttt{randomized maxvalue} chooses the next node randomly among
+        the 5~best neighbors (again, even if it degrades the quality of the current solution).
+        The \texttt{randomized maxvalue} strategy should be defined in a function called
+        \textit{randomized\_maxvalue} with the following signature: \\
+        \texttt{randomized\_maxvalue(problem,limit=100)}. \textbf{(2.5 pts)}
+\end{enumerate}
+\end{enumerate}
+
+\begin{answers}[2.5 cm]
+% IN CASE YOU WANT TO SPECIFY ANY COMMENTS ABOUT YOUR IMPLEMENTATION
+\end{answers}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Compare the 2 strategies implemented in the previous question and \texttt{randomwalk} defined in \textit{search.py} on the given vertex cover instances. 
+    Run the strategies during 100 steps, and report, in a table, the computation
+    time, the value of the best solution and the number of steps needed to reach the best result. For the
+    randomized max value and the random walk, each instance should be tested 10~times to reduce
+    the effects of the randomness on the result. When multiple runs of the same instance
+    are executed, report the mean of the quantities. \textbf{(3 pts)}
+\end{enumerate}
+
+\begin{answers}[7cm]
+% Your answer here
+\begin{center}
+\begin{tabular}{||l||l|l|l||l|l|l||l|l|l||}
+\hline
+\multirow{3}{*}{Inst.} & \multicolumn{3}{c||}{Max value} & \multicolumn{3}{c||}{Random max value} & \multicolumn{3}{c||}{Random walk} \\
+\cline{2-10}
+\cline{2-10}
+ & T(s) & Val & NS & T(s) & Val & NS & T(s) & Val & NS\\
+\hline
+i01 & & & & & & & & &\\
+\hline
+i02 & & & & & & & & &\\
+\hline
+i03 & & & & & & & & &\\
+\hline
+i04 & & & & & & & & &\\
+\hline
+i05 & & & & & & & & &\\
+\hline
+i06 & & & & & & & & &\\
+\hline
+i07 & & & & & & & & &\\
+\hline
+i08 & & & & & & & & &\\
+\hline
+i09 & & & & & & & & &\\
+\hline
+i10 & & & & & & & & &\\
+\hline
+\end{tabular}
+\end{center}
+\textbf{NS}: Number of steps — \textbf{T}: Time — \textbf{Val}: Value of the best solution
+\end{answers}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+    \item \textbf{(4 pts)} Answer the following questions:
+    \begin{enumerate}
+        \item In one sentence, what is the best strategy? \textbf{(0.5 pt)}
+    \end{enumerate}
+\end{enumerate}
+
+\begin{answers}[3.5cm]
+% Your answer here
+\end{answers}
+
+
+\newpage
+\begin{enumerate}
+\setcounter{enumi}{3}
+\begin{enumerate}
+\setcounter{enumii}{1}
+    \item Why do you think the best strategy beats the other ones? What conclusions can be drawn on the atom placement problem ? \textbf{(1.5 pt)}
+\end{enumerate}
+\end{enumerate}
+
+\begin{answers}[7.5cm]
+% Your answer here
+\end{answers}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\begin{enumerate}
+\setcounter{enumii}{2}
+    \item What are the limitations of each strategy in terms of diversification 
+    and intensification? \textbf{(1 pt)}
+\end{enumerate}
+\end{enumerate}
+
+\begin{answers}[5cm]
+% Your answer here
+\end{answers}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\begin{enumerate}
+\setcounter{enumii}{2}
+    \item What is the behavior of the different techniques when they fall 
+    in a local optimum? \textbf{(1 pt)}
+\end{enumerate}
+\end{enumerate}
+
+\begin{answers}[5cm]
+% Your answer here
+\end{answers}
+
+
+\end{document}
