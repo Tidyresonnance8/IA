@@ -38,7 +38,18 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \end{enumerate}
 
 \begin{answers}[10cm]
-    % Your answer here
+\textbf{Variables :}
+\begin{itemize}
+    \item \textbf{Représentation :} Un tableau 2D de variables, par exemple \texttt{mines[i][j]},  représentant la grille du jeu.
+    \item \textbf{Signification :} Chaque variable représente la présence (1) ou l'absence (0) d'une mine à la ligne $i$ et colonne $j$.
+    \item \textbf{Domaine :} $\{0, 1\}$ pour chaque variable.
+    \item \textbf{Quantité :} $n \times m$ variables (où $n$  est le nombre de lignes et $m$ le nombre de colonnes de la grille).
+\end{itemize}
+\textbf{Contraintes :}
+\begin{itemize}
+    \item \textbf{Contraintes 1 (Indices sécurisés) :} Pour chaque case $(i,j)$ contenant un indice  ($clues[i][j] \neq -1$), on impose \texttt{mines[i][j] == 0}. Cela garantit qu'aucune mine n'est placée sur une case indice. Appliquée directementsur la variable de la case.
+    \item \textbf{Contrainte 2 (Comptage des mines) :} Pour chaque case indice $(i,j)$, on impose \texttt{Sum(neighbors) == clues[i][j]}. Cela garantit que le nombreexact de mines dans les cases adjacentes correspond à l'indice. Appliquée sur l'ensemble des variables voisines valides (jusqu'à 8).
+\end{itemize}
 \end{answers}
 
 
@@ -69,7 +80,8 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \end{enumerate}
 
 \begin{answers}[2.5 cm]
-% IN CASE YOU WANT TO SPECIFY ANY COMMENTS ABOUT YOUR IMPLEMENTATION
+% max_value comments
+pour éviter de rester bloqué dans de mauvais optima locaux, la descente a été englobée dans une boucle de "Random Restart" (15 redémarrages). À chaque essai, l'état initial est mélangé aléatoirement, et on conserve le meilleur résultat global.
 \end{answers}
 
 
@@ -87,7 +99,7 @@ The size of the boxes indicate the place you \textbf{can} use, but you \textbf{n
 \end{enumerate}
 
 \begin{answers}[2.5 cm]
-% IN CASE YOU WANT TO SPECIFY ANY COMMENTS ABOUT YOUR IMPLEMENTATION
+Similaire à max\_value, nous utilisons 15 redémarrages aléatoires. Lors de la recherche locale, les voisins sont triés par énergie croissante, et le prochain état est choisi par hasard parmi les 5 meilleurs pour introduire une légère diversification.
 \end{answers}
 
 
@@ -148,7 +160,7 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[3.5cm]
-% Your answer here
+La meilleure stratégir est \texttt{randomized\_maxvalue} (combinée à des redémarrages aléatoires), car elle  équilibre efficacement l'exploitation localeet la capacité à s'échapper des petits optima locaux.
 \end{answers}
 
 
@@ -162,7 +174,7 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[7.5cm]
-% Your answer here
+Le problème de placement d'atomes possède un espace de recherche non convexe rempli de nombreux optima locaux. Une approche \texttt{max\_value} pure est trop gourmande (gloutonne) et se retrouve piégée dans la première  "vallée" rencontrée. À l'inverse, \texttt{random\_walk} est trop chaotique. \texttt{randomized\_maxvalue} introduit juste assez de bruit (choix parmi les 5 meilleurs) pour franchir les petites  barrières d'énergie, permettant  d'atteindre des vallées plus profondes (meilleures solutions).
 \end{answers}
 
 
@@ -177,7 +189,7 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[5cm]
-% Your answer here
+\beg
 \end{answers}
 
 
@@ -192,7 +204,11 @@ i10 & & & & & & & & &\\
 \end{enumerate}
 
 \begin{answers}[5cm]
-% Your answer here
+\begin{itemize}
+    \item \textbf{max\_value :} L'algorithme s'arrête définitivement. N'acceptant aucune dégradation de la solution, il reste coincé au fond du premier optimum local rencontré.
+    \item \textbf{randomized\_maxvalue :} Peut potentiellement s'échapper d'un  optimum local très superficiel en acceptant un  voisin de même énergie (ou très légèrement pire) q'il est dans le top 5,mais finit invariablement bloqué face à un optimum plus profond.
+    \item \textbf{random\_walk :} Ne se bloque jamais. Ignorant la topologie de la fonction coù, l'algorithme ressort naturellement de n'importe quel optimum local en marchant au hasard.
+\end{itemize}
 \end{answers}
 
 
